@@ -100,35 +100,28 @@ exports.createNotifierCallback = () => {
     }
 }
 
-/*
-* webpack打包文件入口设置
-*
-* */
-const glob = require('glob')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const PAGE_PATH = path.resolve(__dirname, '../src/views')
-const merge = require('webpack-merge')
+let glob = require('glob')
+let HtmlWebpackPlugin = require('html-webpack-plugin')
+let PAGE_PATH = path.resolve(__dirname, '../src/views')
+let merge = require('webpack-merge')
 
 exports.entries = function () {
-    const entryFiles = glob.sync(PAGE_PATH + '/*/*.js')
-    const map = {}
+    let entryFiles = glob.sync(PAGE_PATH + '/*/*.js')
+    let map = {}
     entryFiles.forEach((filePath) => {
-        const filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
+        let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
         map[filename] = filePath
     })
     return map
 }
 
-/*
-*
-* HTML插件模板
-* */
 exports.htmlPlugin = function () {
     let entryHtml = glob.sync(PAGE_PATH + '/*/*.html')
     let arr = []
     entryHtml.forEach((filePath) => {
         let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
         let conf = {
+            template: filePath,
             filename: filename + '.html',
             chunks: ['manifest', 'vendor', filename],
             inject: true
