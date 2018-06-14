@@ -52,7 +52,8 @@ npm test
 │   ├── components //公用组件
 │   │   ├── HelloWorld.vue
 │   │   └── XXXX.vue
-│   └── pages //页面文件
+│   └── views //页面文件
+│   └── utils //工具类和函数
 │       ├── page1
 │       │   ├── page1.html  //入口
 │       │   ├── page1.js
