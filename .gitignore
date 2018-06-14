@@ -15,3 +15,7 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+yarn.lock
+src/utils/
+src/views/page1/components/
+src/views/page2/components/
